@@ -1,0 +1,7 @@
+#!/bin/bash
+#use this file to write your runner application
+
+#this application should take the x.sum files on /files
+#and call summer.py using as parameters the number on x.sum 
+#when called this application will add a file named a+b.summed to /allsums
+#with the output from summer.py as content
