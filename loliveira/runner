@@ -5,3 +5,10 @@
 #and call summer.py using as parameters the number on x.sum 
 #when called this application will add a file named a+b.summed to /allsums
 #with the output from summer.py as content
+
+a=$(cat a.sum)
+b=$(cat b.sum)
+
+soma=$(python summer.py $a $b)
+
+echo "O valor de $a + $b é igual a : $soma"
