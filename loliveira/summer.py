@@ -1,4 +1,6 @@
+#coding: utf-8
 import sys
+
 #use this file to write your summer application
 
 #the summer should receive two integers a and b and return:
@@ -9,4 +11,4 @@ b = float(sys.argv[2])
  
 soma = float(a+b)
 
-print(soma)
+print 'O valor de ',str(a),' + ',str(b),' é igual a ',str(soma)

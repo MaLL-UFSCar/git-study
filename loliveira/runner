@@ -6,9 +6,40 @@
 #when called this application will add a file named a+b.summed to /allsums
 #with the output from summer.py as content
 
-a=$(cat a.sum)
-b=$(cat b.sum)
+arquivo=$*
 
-soma=$(python summer.py $a $b)
+a=$(cat $arquivo)
 
-echo "O valor de $a + $b é igual a : $soma"
+saida=$(python summer.py $a)
+
+echo $saida
+
+saida=($saida)
+tam=${#saida[@]}
+resultado=${saida[$(($tam - 1))]}
+
+arquivos=($(ls))
+quantArq=$((${#arquivos[@]} -1))
+
+while [ "$quantArq" -ge 0 ]  
+do
+     if [ "${arquivos[$quantArq]}" == "allsums" ];
+     then
+	quantArq=-2
+        break
+     else
+        quantArq=$(($quantArq - 1)) 	
+     fi
+         
+done
+if [ "$quantArq" == -1 ];
+then
+     mkdir allsums
+     echo $resultado > allsums/$resultado.summed
+else
+     echo $resultado > allsums/$resultado.summed  
+fi
+
+
+     
+    
