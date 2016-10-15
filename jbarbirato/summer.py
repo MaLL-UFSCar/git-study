@@ -1,4 +1,7 @@
-#use this file to write your summer application
+x = raw_input('')
+sum = int(0)
+for i in x:
+	if i != ' ':
+		sum = sum + int(i)
 
-#the summer should receive two integers a and b and return:
-#"the sum of a and b is a+b"
+print "o valor de x + y eh igual a", sum

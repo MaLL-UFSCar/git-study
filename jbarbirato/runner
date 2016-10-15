@@ -2,6 +2,37 @@
 #use this file to write your runner application
 
 #this application should take the x.sum files on /files
-#and call summer.py using as parameters the number on x.sum 
+#and call summer.py using as parameters the number on x.sum
 #when called this application will add a file named a+b.summed to /allsums
 #with the output from summer.py as content
+
+# Autor - João Gabriel Melo Barbirato
+
+# Criando a pasta allsums verificando sua existência
+test -d allsums || mkdir allsums
+
+# guardar entrada
+test -f allsums/x+y1.summed || ENTRADA=$(cat ../files/a.sum)
+test -f allsums/x+y1.summed && ENTRADA=$(cat ../files/b.sum)
+test -f allsums/x+y2.summed && ENTRADA=$(cat ../files/c.sum)
+test -f allsums/x+y3.summed && ENTRADA=$(cat ../files/d.sum)
+test -f allsums/x+y4.summed && ENTRADA=$(cat ../files/e.sum)
+
+# Parâmetro de identificação
+test -f allsums/x+y1.summed || X=$((1))
+test -f allsums/x+y1.summed && X=$((2))
+test -f allsums/x+y2.summed && X=$((3))
+test -f allsums/x+y3.summed && X=$((4))
+test -f allsums/x+y4.summed && X=$((5))
+
+# passagens de entrada/saida
+test "$X" -eq 1 && echo $ENTRADA | python summer.py > allsums/x+y1.summed
+test "$X" -eq 2 && echo $ENTRADA | python summer.py > allsums/x+y2.summed
+test "$X" -eq 3 && echo $ENTRADA | python summer.py > allsums/x+y3.summed
+test "$X" -eq 4 && echo $ENTRADA | python summer.py > allsums/x+y4.summed
+test "$X" -eq 5 && echo $ENTRADA | python summer.py > allsums/x+y5.summed
+
+# liberar variável
+unset ENTRADA
+unset X
+
