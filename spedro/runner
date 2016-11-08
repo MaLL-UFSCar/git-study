@@ -1,0 +1,16 @@
+#!/bin/bash
+#use this file to write your runner application
+
+#this application should take the x.sum files on /files
+#and call summer.py using as parameters the number on x.sum 
+#when called this application will add a file named a+b.summed to /allsums
+#with the output from summer.py as content
+
+arq=$1
+
+n1 n2 <<< $(cat $arq)
+
+mkdir -p allsums
+
+python summer.py $n1 $n2 > allsums/n1+n2.summed
+
